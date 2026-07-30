@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scan2Cell</title>
+  <link rel="stylesheet" href="taskpane.css" />
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="qrcode.min.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="logo">S2C</div>
+      <div><h1>Scan2Cell</h1><p>Phone scans → selected Excel cell</p></div>
+    </header>
+
+    <section class="card status-card">
+      <div class="row"><span>Connection</span><strong id="status" class="status offline">Starting…</strong></div>
+      <div class="row"><span>Last insert</span><strong id="lastInsert">None</strong></div>
+    </section>
+
+    <section class="card">
+      <h2>1. Pair your phone</h2>
+      <div id="pairQr" aria-label="Pairing QR code"></div>
+      <p class="hint">Open the Android app and choose <b>Pair with Excel</b>.</p>
+      <button id="newPairing" class="secondary">New pairing</button>
+    </section>
+
+    <section class="card">
+      <h2>2. Choose where scans go</h2>
+      <p>Select any cell in Excel. The value is inserted into the cell selected when the phone sends it.</p>
+      <label for="moveMode">After each scan</label>
+      <select id="moveMode">
+        <option value="down">Move one row down</option>
+        <option value="right">Move one column right</option>
+        <option value="stay">Stay on the same cell</option>
+      </select>
+      <label class="check"><input id="asText" type="checkbox" checked /> Preserve codes as text (keeps leading zeroes)</label>
+    </section>
+
+    <section class="card privacy">
+      <h2>Privacy</h2>
+      <p>The phone processes the photo. Only encrypted recognized text is relayed.</p>
+    </section>
+
+    <pre id="error" hidden></pre>
+  </main>
+  <script src="taskpane.js"></script>
+</body>
+</html>
