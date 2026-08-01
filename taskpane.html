@@ -6,7 +6,6 @@
   <title>Scan2Cell</title>
   <link rel="stylesheet" href="taskpane.css" />
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-  <script src="qrcode.min.js"></script>
 </head>
 <body>
   <main>
@@ -21,10 +20,11 @@
     </section>
 
     <section class="card">
-      <h2>1. Pair your phone</h2>
-      <div id="pairQr" aria-label="Pairing QR code"></div>
-      <p class="hint">Open the Android app and choose <b>Pair with Excel</b>.</p>
-      <button id="newPairing" class="secondary">New pairing</button>
+      <h2>1. Connect your phone</h2>
+      <p class="hint">Enter this six-digit code in the Scan2Cell phone app:</p>
+      <div id="pairCode" class="pair-code" aria-label="Six-digit pairing code">------</div>
+      <p id="pairExpiry" class="pair-expiry">Preparing code…</p>
+      <button id="newPairing" class="secondary">Generate a new code</button>
     </section>
 
     <section class="card">
@@ -41,7 +41,7 @@
 
     <section class="card privacy">
       <h2>Privacy</h2>
-      <p>The phone processes the photo. Only encrypted recognized text is relayed.</p>
+      <p>The six-digit code is valid for five minutes. After pairing, scans use a separate random encrypted session.</p>
     </section>
 
     <pre id="error" hidden></pre>
